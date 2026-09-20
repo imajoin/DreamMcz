@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DreamMC — Survive, Earn, Dominate</title>
+<meta name="description" content="Join DreamMC at play.dreammc.fun. Premium survival with ranks, crate keys and mystery crates.">
+<meta name="theme-color" content="#10091f">
+<meta property="og:title" content="DreamMC — Survive, Earn, Dominate">
+<meta property="og:description" content="Join DreamMC at play.dreammc.fun. Premium survival with ranks, crate keys and mystery crates.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#10091f; --bg2:#180f2e; --card:#1d1338; --line:rgba(255,255,255,.09);
+  --text:#f3eefc; --muted:#a99cc6; --violet:#8b5cf6; --pink:#ec4899; --gold:#fbbf24;
+  --grad:linear-gradient(135deg,#8b5cf6,#ec4899);
+  --common:#9ca3af; --rare:#38bdf8; --epic:#a855f7; --legendary:#fbbf24; --mythic:#f43f5e;
+  --display:'Cinzel',Georgia,serif; --body:'Outfit',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.55;min-height:100vh;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--violet);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--display);line-height:1.15}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* NAV */
+nav.top{position:sticky;top:0;z-index:50;background:rgba(16,9,31,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{font-family:var(--display);font-weight:900;font-size:1.35rem;letter-spacing:.06em}
+.links{display:flex;gap:4px;align-items:center;flex-wrap:wrap}
+.links a{padding:8px 12px;border-radius:8px;color:var(--muted);font-weight:500;font-size:.93rem;transition:.2s}
+.links a:hover,.links a.active{color:#fff;background:rgba(255,255,255,.07)}
+.nav-right{display:flex;gap:10px;align-items:center}
+.cart-btn{position:relative;padding:9px 14px;border-radius:10px;background:rgba(255,255,255,.07);font-weight:600;font-size:.9rem}
+.cart-btn .count{position:absolute;top:-6px;right:-6px;background:var(--grad);border-radius:99px;min-width:20px;height:20px;font-size:.72rem;display:grid;place-items:center;padding:0 5px}
+.burger{display:none;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,.07)}
+@media(max-width:940px){
+  .links{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--bg2);padding:12px 20px;border-bottom:1px solid var(--line)}
+  .links.open{display:flex}
+  .burger{display:block}
+}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 24px;border-radius:12px;font-weight:600;transition:.2s;font-size:.98rem}
+.btn-primary{background:var(--grad);box-shadow:0 8px 30px -8px rgba(139,92,246,.7)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 36px -8px rgba(236,72,153,.7)}
+.btn-ghost{border:1px solid var(--line);background:rgba(255,255,255,.04)}
+.btn-ghost:hover{background:rgba(255,255,255,.1)}
+
+/* HERO */
+.hero{position:relative;min-height:88vh;display:grid;place-items:center;text-align:center;overflow:hidden;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:
+  linear-gradient(180deg,rgba(16,9,31,.55),rgba(16,9,31,.92) 85%,var(--bg)),
+  url('https://dreammc-fun.lovable.app/assets/hero-BQcO3qLk.jpg') center/cover no-repeat, radial-gradient(circle at 50% 30%,#3b1d7a,#10091f 70%)}
+.hero .tag{font-size:.85rem;letter-spacing:.35em;color:var(--muted);margin-bottom:18px}
+.hero h1{font-size:clamp(3rem,10vw,7rem);font-weight:900;letter-spacing:.04em}
+.hero p.lead{max-width:600px;margin:18px auto 26px;color:#d9cff0;font-size:1.12rem}
+.ip-box{display:inline-flex;align-items:center;gap:12px;background:rgba(0,0,0,.4);border:1px solid var(--line);border-radius:14px;padding:8px 8px 8px 20px;margin-bottom:24px}
+.ip-box code{font-family:ui-monospace,Menlo,monospace;font-size:1.02rem;color:#fff}
+.ip-box button{background:var(--grad);border-radius:9px;padding:8px 14px;font-weight:700;font-size:.78rem;letter-spacing:.06em}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* SECTIONS */
+section.sec{padding:88px 0}
+.sec-head{text-align:center;margin-bottom:44px}
+.eyebrow{color:var(--violet);font-weight:600;font-size:.85rem;letter-spacing:.22em;text-transform:uppercase;margin-bottom:10px}
+.sec-head h2{font-size:clamp(1.9rem,4vw,2.9rem)}
+.sec-head p{color:var(--muted);margin-top:10px}
+
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.feat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;transition:.25s}
+.feat:hover{border-color:rgba(139,92,246,.6);transform:translateY(-4px)}
+.feat .ico{width:46px;height:46px;border-radius:12px;background:var(--grad);display:grid;place-items:center;font-size:1.4rem;margin-bottom:16px}
+.feat h3{font-size:1.1rem;margin-bottom:8px}
+.feat p{color:var(--muted);font-size:.95rem}
+
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;counter-reset:s}
+.step{position:relative;background:linear-gradient(160deg,var(--card),var(--bg2));border:1px solid var(--line);border-radius:18px;padding:28px}
+.step .n{font-family:var(--display);font-size:3rem;font-weight:900;opacity:.9;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.step h3{margin:6px 0 8px;font-size:1.25rem;letter-spacing:.08em}
+.step p{color:var(--muted)}
+
+.alt{background:var(--bg2)}
+
+/* PRODUCT GRID */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.prod{position:relative;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:.25s}
+.prod:hover{transform:translateY(-4px);border-color:rgba(139,92,246,.6)}
+.prod .art{aspect-ratio:16/10;background:linear-gradient(135deg,#3b1d7a,#1d1338);overflow:hidden}
+.prod .art img{width:100%;height:100%;object-fit:cover}
+.badge{position:absolute;top:12px;left:12px;background:var(--grad);font-size:.68rem;font-weight:700;letter-spacing:.1em;padding:5px 10px;border-radius:99px;z-index:2}
+.prod .body{padding:18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.prod h3{font-size:1.15rem}
+.rarity{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.rarity.Common{color:var(--common)}.rarity.Rare{color:var(--rare)}.rarity.Epic{color:var(--epic)}.rarity.Legendary{color:var(--legendary)}.rarity.Mythic{color:var(--mythic)}
+.prod .desc{color:var(--muted);font-size:.92rem;flex:1}
+.durs{display:flex;flex-direction:column;gap:6px}
+.dur{display:flex;justify-content:space-between;padding:8px 12px;border:1px solid var(--line);border-radius:10px;font-size:.88rem;background:rgba(255,255,255,.03);transition:.15s;text-align:left;width:100%}
+.dur:hover{border-color:rgba(139,92,246,.6)}
+.dur.sel{border-color:var(--violet);background:rgba(139,92,246,.18)}
+.buy{display:flex;align-items:center;justify-content:space-between;margin-top:4px}
+.price{font-family:var(--display);font-size:1.4rem;font-weight:700}
+.add{background:var(--grad);padding:9px 20px;border-radius:10px;font-weight:700;font-size:.9rem;transition:.2s}
+.add:hover{transform:scale(1.05)}
+
+/* STORE */
+.store-hero{padding:56px 0 24px;text-align:center}
+.store-hero .k{color:var(--gold);letter-spacing:.3em;font-size:.8rem;font-weight:600}
+.store-hero h1{font-size:clamp(2rem,5vw,3.4rem);margin:8px 0}
+.store-hero p{color:var(--muted)}
+.tools{display:flex;gap:14px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin:28px 0}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tab{padding:9px 18px;border-radius:99px;border:1px solid var(--line);background:rgba(255,255,255,.04);font-weight:600;font-size:.9rem;transition:.2s}
+.tab:hover{background:rgba(255,255,255,.1)}
+.tab.on{background:var(--grad);border-color:transparent}
+.search{padding:11px 16px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:#fff;font:inherit;min-width:240px}
+.search::placeholder{color:var(--muted)}
+.empty{text-align:center;color:var(--muted);padding:60px 0}
+
+/* ROADMAP + TEXT PAGES */
+.road{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;max-width:900px;margin:0 auto}
+.road li{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;font-weight:600;display:flex;gap:10px;align-items:center}
+.road li::before{content:"◆";color:var(--violet)}
+.center{text-align:center;margin-top:34px}
+.prose{max-width:760px;margin:0 auto;padding:60px 20px 90px}
+.prose h1{font-size:2.4rem;margin-bottom:8px}
+.prose h2{font-size:1.3rem;margin:32px 0 8px}
+.prose p,.prose li{color:#cfc4e8;margin-bottom:10px}
+.prose ul{padding-left:22px}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line);background:#0b0616;padding:56px 0 30px;margin-top:40px}
+.foot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:34px}
+@media(max-width:700px){.foot{grid-template-columns:1fr}}
+footer h4{font-family:var(--display);margin-bottom:12px;font-size:1rem}
+footer ul{list-style:none;display:grid;gap:8px}
+footer li a{color:var(--muted);transition:.2s}
+footer li a:hover{color:#fff}
+.foot .tagline{color:var(--muted);font-size:.85rem;letter-spacing:.25em;margin:8px 0 16px}
+.copy{text-align:center;color:var(--muted);font-size:.85rem;margin-top:40px;padding-top:24px;border-top:1px solid var(--line)}
+
+/* CART */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:90;opacity:0;pointer-events:none;transition:.25s}
+.overlay.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--bg2);border-left:1px solid var(--line);z-index:100;transform:translateX(100%);transition:.3s;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.drawer.on{transform:none}
+.drawer header{display:flex;justify-content:space-between;align-items:center;padding:20px;border-bottom:1px solid var(--line)}
+.drawer header h3{font-size:1.2rem}
+.items{flex:1;overflow:auto;padding:16px 20px;display:grid;gap:12px;align-content:start}
+.item{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px}
+.item img{width:64px;height:48px;object-fit:cover;border-radius:8px;background:#2a1a4d}
+.item .i-info{flex:1;min-width:0}
+.item .i-name{font-weight:600}
+.item .i-sub{color:var(--muted);font-size:.82rem}
+.item .rm{color:var(--muted);padding:6px 10px;border-radius:8px}
+.item .rm:hover{background:rgba(255,255,255,.08);color:#fff}
+.drawer footer{border:0;margin:0;padding:18px 20px;background:var(--bg);border-top:1px solid var(--line)}
+.total{display:flex;justify-content:space-between;font-size:1.1rem;margin-bottom:14px;font-weight:600}
+.drawer .btn{width:100%}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(30px);background:#fff;color:#10091f;padding:11px 20px;border-radius:12px;font-weight:600;opacity:0;transition:.3s;z-index:200;pointer-events:none}
+.toast.on{opacity:1;transform:translateX(-50%)}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <a href="#/" class="logo grad-text">DREAMMC</a>
+    <div class="links" id="links">
+      <a href="#/" data-r="">Home</a>
+      <a href="#/store" data-r="store">Store</a>
+      <a href="#/ranks" data-r="ranks">Ranks</a>
+      <a href="#/keys" data-r="keys">Keys</a>
+      <a href="#/crates" data-r="crates">Crates</a>
+      <a href="#/gkits" data-r="gkits">Gkits</a>
+      <a href="#/gems" data-r="gems">Gems</a>
+      <a href="#/features" data-r="features">Features</a>
+      <a href="#/coming-soon" data-r="coming-soon">Coming Soon</a>
+    </div>
+    <div class="nav-right">
+      <button class="cart-btn" id="cartBtn" aria-label="Open cart">Cart <span class="count" id="cartCount">0</span></button>
+      <button class="burger" id="burger" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</nav>
+
+<main id="app"></main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="logo grad-text">DREAMMC</div>
+        <p class="tagline">SURVIVE • EARN • DOMINATE</p>
+        <div class="ip-box"><code>play.dreammc.fun</code><button data-copy>COPY IP</button></div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#/">Home</a></li><li><a href="#/store">Store</a></li><li><a href="#/ranks">Ranks</a></li>
+          <li><a href="#/keys">Keys</a></li><li><a href="#/crates">Crates</a></li><li><a href="#/gkits">Gkits</a></li>
+          <li><a href="#/gems">Gems</a></li><li><a href="#/features">Features</a></li><li><a href="#/coming-soon">Coming Soon</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community</h4>
+        <ul>
+          <li><a href="https://discord.gg/dreammc" target="_blank" rel="noopener">Join Discord</a></li>
+          <li><a href="#/support">Support</a></li>
+          <li><a href="#/terms">Terms of Service</a></li>
+          <li><a href="#/privacy">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copy">© 2026 DreamMC. Not affiliated with Mojang or Microsoft.</p>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Cart">
+  <header><h3>Your Cart</h3><button id="closeCart" aria-label="Close cart">✕</button></header>
+  <div class="items" id="items"></div>
+  <footer>
+    <div class="total"><span>Total</span><span id="total">₹0</span></div>
+    <a class="btn btn-primary" id="checkout" href="https://discord.gg/dreammc" target="_blank" rel="noopener">Checkout on Discord</a>
+  </footer>
+</aside>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ========= DATA ========= */
+const IMG = 'https://dreammc-fun.lovable.app/assets/';
+/* Image files are hosted on your Lovable site. To make the site fully independent,
+   right-click → save each image into an /assets folder and change IMG to 'assets/'. */
+const P = [
+  // RANKS
+  {id:'hunter',cat:'ranks',name:'Hunter',rar:'Common',desc:'Your first step up the DreamMC ladder.',img:'rank-hunter-Dlh-RyAO.jpg',opts:[['7 Days',30],['30 Days',100],['Seasonal',250]],def:1},
+  {id:'champion',cat:'ranks',name:'Champion',rar:'Rare',desc:'Prove yourself and stand apart from the crowd.',img:'rank-champion-CopG0yOB.jpg',opts:[['7 Days',50],['30 Days',200],['Seasonal',450]],def:1},
+  {id:'gladiator',cat:'ranks',name:'Gladiator',rar:'Rare',desc:'Built for players who live in the arena.',img:'rank-gladiator-DVnqqLfo.jpg',opts:[['7 Days',100],['30 Days',300],['Seasonal',650]],def:1},
+  {id:'warlord',cat:'ranks',name:'Warlord',rar:'Epic',desc:'Command respect across the whole server.',img:'rank-warlord-C-XZ-37B.jpg',opts:[['7 Days',150],['30 Days',400],['Seasonal',900]],def:1,badge:'POPULAR'},
+  {id:'titan',cat:'ranks',name:'Titan',rar:'Epic',desc:'Colossal presence, colossal prestige.',img:'rank-titan-C0Ox-iuU.jpg',opts:[['7 Days',200],['30 Days',500],['Seasonal',1200]],def:1},
+  {id:'hyper',cat:'ranks',name:'Hyper',rar:'Legendary',desc:'Elite tier for the most dedicated players.',img:'rank-hyper-BWG7w1LG.jpg',opts:[['7 Days',350],['30 Days',600],['Seasonal',1500]],def:1},
+  {id:'hyperplus',cat:'ranks',name:'Hyper+',rar:'Mythic',desc:'The absolute peak of DreamMC status.',img:'rank-hyperplus-CQdR9sav.jpg',opts:[['7 Days',400],['30 Days',700],['Seasonal',2000]],def:1,badge:'ULTIMATE'},
+  // KEYS
+  {id:'rare-key',cat:'keys',name:'Rare Key',rar:'Rare',desc:'Unlock the Rare crate and roll your luck.',img:'key-rare-7ckk5ABv.jpg',price:10},
+  {id:'legendary-key',cat:'keys',name:'Legendary Key',rar:'Legendary',desc:'Open the Legendary crate for higher-tier rolls.',img:'key-legendary-CaVbIJIL.jpg',price:20},
+  {id:'spawner-key',cat:'keys',name:'Spawner Key',rar:'Epic',desc:'Dedicated key for spawner rewards.',img:'key-spawner-_pqMI4ag.jpg',price:20},
+  {id:'lootbox-key',cat:'keys',name:'Lootbox Key',rar:'Epic',desc:'Premium lootbox access with big-value rolls.',img:'key-lootbox-DUlGztDb.jpg',price:249,badge:'POPULAR'},
+  {id:'rankup-key',cat:'keys',name:'Rankup Key',rar:'Mythic',desc:'The rarest key on the server.',img:'key-rankup-CX3lC5ck.jpg',price:299},
+  // CRATES
+  {id:'crate-1',cat:'crates',name:'1 Mystery Crate',rar:'Rare',desc:'A single sealed mystery crate.',img:'crate-1-CH4jVEjk.jpg',price:69},
+  {id:'crate-3',cat:'crates',name:'3 Mystery Crates',rar:'Epic',desc:'Three crates, three chances at something great.',img:'crate-3-6x4nUwSk.jpg',price:149,badge:'POPULAR'},
+  {id:'crate-5',cat:'crates',name:'5 Mystery Crates',rar:'Legendary',desc:'The full haul — best value per crate.',img:'crate-5-BYF_VSy8.jpg',price:199,badge:'BEST VALUE'},
+  // GKITS
+  {id:'gkit-peace',cat:'gkits',name:'Gkit Peace',rar:'Epic',desc:"The guardian's kit — blessed gear for peaceful dominion.",img:'gkit-peace-GFBl1-vF.jpg',opts:[['Once',300],['Seasonal',800]],def:1,badge:'GKIT'},
+  {id:'gkit-villain',cat:'gkits',name:'Gkit Villain',rar:'Legendary',desc:'Dark-forged armor for players who rule through fear.',img:'gkit-villain-DY2Bl3il.jpg',opts:[['Once',500],['Seasonal',1200]],def:1,badge:'GKIT'},
+  {id:'gkit-hero',cat:'gkits',name:'Gkit Hero',rar:'Mythic',desc:"The legendary hero's kit — the ultimate gear on DreamMC.",img:'gkit-hero-QpXtp2vO.jpg',opts:[['Once',700],['Seasonal',1500]],def:1,badge:'SPECIAL'},
+  // GEMS
+  {id:'gems-starter',cat:'gems',name:'Starter',rar:'Common',desc:'200 Gems — a solid head start on the server economy.',img:'gem-starter-DwscVMGB.jpg',price:80},
+  {id:'gems-pro',cat:'gems',name:'Pro',rar:'Rare',desc:'400 Gems — for players ready to spend big in game.',img:'gem-pro-CSw29dwu.jpg',price:150},
+  {id:'gems-package',cat:'gems',name:'Package',rar:'Epic',desc:'600 Gems — a serious stack of in-game currency.',img:'gem-package-CVWVqYbT.jpg',price:200},
+  {id:'gems-bundle',cat:'gems',name:'Bundle',rar:'Legendary',desc:'800 Gems — the biggest gem haul on DreamMC.',img:'gem-bundle-CQUSD8DG.jpg',price:300,badge:'BEST VALUE'},
+];
+const CATS = [['all','All'],['ranks','Ranks'],['keys','Keys'],['crates','Crates'],['gkits','Gkits'],['gems','Gems']];
+const CAT_TEXT = {
+  ranks:['Ranks','Climb the ladder from Hunter all the way to Hyper+.'],
+  keys:['Keys','Unlock crates across the server and roll for rewards.'],
+  crates:['Mystery Crates','Sealed crates packed with surprises.'],
+  gkits:['Gkits','Special kits forged for your DreamMC adventure.'],
+  gems:['Gems','In-game currency to power your economy.'],
+};
+const FEATURES = [
+  ['💰','Survival Economy','A deep, player-driven economy built to reward the grind.'],
+  ['⛏️','Spawners & Grinders','Build serious farms and scale your income.'],
+  ['🎁','Crates & Keys','Roll for rewards from tiered crates across the server.'],
+  ['👑','Ranks & Progression','Climb the ladder from Hunter all the way to Hyper+.'],
+  ['📅','Daily Rewards','Keep your streak alive and earn useful rewards every day.'],
+  ['⚡','Lag-Free Hosting','Tuned hardware and configs for smooth gameplay.'],
+  ['🛡️','Active Staff','A responsive team keeping the server fair and fun.'],
+];
+const STEPS = [
+  ['01','SURVIVE','Land in a harsh world, gather your first resources and stay alive.'],
+  ['02','EARN','Farm, trade and build income streams that compound over time.'],
+  ['03','PROGRESS','Unlock ranks, keys and rewards as your power grows.'],
+  ['04','DOMINATE','Lead your faction and leave your mark on the server.'],
+];
+const ROADMAP = ['KOTH','Mines','Market System','VoteShop','Coins System','Much More'];
+
+/* ========= HELPERS ========= */
+const $ = s => document.querySelector(s);
+const inr = n => '₹' + n.toLocaleString('en-IN');
+const state = {sel:{}, cat:'all', q:''};   // sel: chosen option index per product
+let cart = [];
+try{ cart = JSON.parse(localStorage.getItem('dreammc-cart')||'[]'); }catch(e){}
+const saveCart = () => { try{ localStorage.setItem('dreammc-cart',JSON.stringify(cart)); }catch(e){} };
+function toast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('on'); clearTimeout(toast.t); toast.t=setTimeout(()=>t.classList.remove('on'),1800); }
+const selIdx = p => state.sel[p.id] ?? p.def ?? 0;
+const priceOf = p => p.opts ? p.opts[selIdx(p)][1] : p.price;
+
+function card(p){
+  const durs = p.opts ? `<div class="durs">${p.opts.map((o,i)=>`
+    <button class="dur ${i===selIdx(p)?'sel':''}" data-pick="${p.id}" data-i="${i}"><span>${o[0]}</span><b>${inr(o[1])}</b></button>`).join('')}</div>` : '';
+  return `<article class="prod">
+    ${p.badge?`<span class="badge">${p.badge}</span>`:''}
+    <div class="art"><img src="${IMG+p.img}" alt="${p.name} artwork" loading="lazy" onerror="this.style.display='none'"></div>
+    <div class="body">
+      <h3>${p.name}</h3>
+      <span class="rarity ${p.rar}">${p.rar}</span>
+      <p class="desc">${p.desc}</p>
+      ${durs}
+      <div class="buy"><span class="price">${inr(priceOf(p))}</span><button class="add" data-add="${p.id}">Add</button></div>
+    </div></article>`;
+}
+
+/* ========= PAGES ========= */
+function home(){
+  const top = ['hyper','hyperplus','crate-5'].map(id=>P.find(p=>p.id===id));
+  top[0] = {...top[0]}; // keep original home badges
+  const badgeFix = {hyper:null,hyperplus:'ULTIMATE','crate-5':'BEST VALUE'};
+  return `
+  <section class="hero"><div class="wrap">
+    <p class="tag">SURVIVE • EARN • DOMINATE</p>
+    <h1 class="grad-text">DREAMMC</h1>
+    <p class="lead">A premium Minecraft survival world with a real economy, custom enchants, ranks and crates. Build, trade and take over.</p>
+    <div class="ip-box"><code>play.dreammc.fun</code><button data-copy>COPY IP</button></div>
+    <div class="cta-row">
+      <a class="btn btn-ghost" href="#/store">Visit Store</a>
+      <a class="btn btn-ghost" href="https://discord.gg/dreammc" target="_blank" rel="noopener">Join Discord</a>
+      <a class="btn btn-primary" href="#/ranks">Play Now</a>
+    </div>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Server Features</p><h2>Built for serious survival</h2><p>The systems that make DreamMC worth logging into every day.</p></div>
+    <div class="feat-grid">${FEATURES.map(f=>`<div class="feat"><div class="ico">${f[0]}</div><h3>${f[1]}</h3><p>${f[2]}</p></div>`).join('')}</div>
+  </div></section>
+
+  <section class="sec alt"><div class="wrap">
+    <div class="sec-head"><p class="eyebrow">The DreamMC Experience</p><h2>Four stages to the top</h2></div>
+    <div class="steps">${STEPS.map(s=>`<div class="step"><div class="n">${s[0]}</div><h3>${s[1]}</h3><p>${s[2]}</p></div>`).join('')}</div>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Store</p><h2>Top ranks &amp; crates</h2><p>Support the server and unlock your next tier.</p></div>
+    <div class="grid">${top.map(p=>card({...p,badge:badgeFix[p.id]})).join('')}</div>
+    <div class="center"><a class="btn btn-ghost" href="#/store">Browse the full store</a></div>
+  </div></section>
+
+  <section class="sec alt"><div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Roadmap</p><h2>Coming soon</h2></div>
+    <ul class="road">${ROADMAP.map(r=>`<li>${r}</li>`).join('')}</ul>
+    <div class="center"><a class="btn btn-ghost" href="#/coming-soon">See the roadmap</a></div>
+  </div></section>`;
+}
+
+function store(cat){
+  state.cat = cat || 'all';
+  const [title,sub] = CAT_TEXT[cat] || ['Featured Treasures','Ranks, keys, crates and special Gkits forged for your DreamMC adventure.'];
+  return `
+  <section class="store-hero"><div class="wrap">
+    <p class="k">KINGDOM MARKETPLACE</p>
+    <h1 class="grad-text">${cat?title:'Featured Treasures'}</h1>
+    <p>${sub}</p>
+    <div class="tools">
+      <div class="tabs">${CATS.map(c=>`<button class="tab ${c[0]===state.cat?'on':''}" data-cat="${c[0]}">${c[1]}</button>`).join('')}</div>
+      <input class="search" id="search" type="search" placeholder="Search products" aria-label="Search products" value="${state.q}">
+    </div>
+    <div class="grid" id="storeGrid" style="text-align:left"></div>
+  </div></section>`;
+}
+function renderStoreGrid(){
+  const g = $('#storeGrid'); if(!g) return;
+  const q = state.q.trim().toLowerCase();
+  const list = P.filter(p=>(state.cat==='all'||p.cat===state.cat)&&(!q||(p.name+' '+p.rar+' '+p.cat).toLowerCase().includes(q)));
+  g.innerHTML = list.length ? list.map(card).join('') : '<p class="empty" style="grid-column:1/-1">No products found. Try a different search.</p>';
+}
+
+const featuresPage = () => `<section class="sec"><div class="wrap">
+  <div class="sec-head"><p class="eyebrow">Server Features</p><h2>Built for serious survival</h2><p>The systems that make DreamMC worth logging into every day.</p></div>
+  <div class="feat-grid">${FEATURES.map(f=>`<div class="feat"><div class="ico">${f[0]}</div><h3>${f[1]}</h3><p>${f[2]}</p></div>`).join('')}</div></div></section>`;
+
+const comingPage = () => `<section class="sec"><div class="wrap">
+  <div class="sec-head"><p class="eyebrow">Roadmap</p><h2>Coming soon</h2><p>What we're building next for DreamMC.</p></div>
+  <ul class="road">${ROADMAP.map(r=>`<li>${r}</li>`).join('')}</ul></div></section>`;
+
+const supportPage = () => `<div class="prose"><h1>Support</h1>
+  <p>Need help with an order, a rank or a bug? Our staff are active on Discord.</p>
+  <h2>Contact us</h2><ul><li>Join our <a href="https://discord.gg/dreammc" target="_blank" rel="noopener" style="color:var(--violet)">Discord server</a> and open a ticket.</li><li>Include your in-game username and a screenshot of your payment.</li></ul></div>`;
+const termsPage = () => `<div class="prose"><h1>Terms of Service</h1>
+  <p>Edit this page with your own terms. DreamMC is not affiliated with Mojang or Microsoft.</p>
+  <h2>Purchases</h2><p>All purchases are for in-game perks and are non-transferable. Add your refund policy here.</p>
+  <h2>Conduct</h2><p>Players must follow the server rules. Rule-breaking may result in removal of perks without refund.</p></div>`;
+const privacyPage = () => `<div class="prose"><h1>Privacy Policy</h1>
+  <p>Edit this page with your own policy.</p>
+  <h2>What we collect</h2><p>Your Minecraft username and payment details needed to deliver your purchase.</p>
+  <h2>How we use it</h2><p>Only to deliver purchases and provide support. We do not sell your data.</p></div>`;
+
+/* ========= ROUTER ========= */
+function route(){
+  const r = (location.hash.replace(/^#\/?/,'')||'').split('?')[0];
+  const app = $('#app');
+  const pages = {
+    '':home, store:()=>store(''), ranks:()=>store('ranks'), keys:()=>store('keys'), crates:()=>store('crates'),
+    gkits:()=>store('gkits'), gems:()=>store('gems'), features:featuresPage, 'coming-soon':comingPage,
+    support:supportPage, terms:termsPage, privacy:privacyPage,
+  };
+  app.innerHTML = (pages[r]||home)();
+  if(['store','ranks','keys','crates','gkits','gems'].includes(r)) renderStoreGrid();
+  document.querySelectorAll('.links a').forEach(a=>a.classList.toggle('active',a.dataset.r===r));
+  $('#links').classList.remove('open');
+  window.scrollTo(0,0);
+  const t = {'':'DreamMC — Survive, Earn, Dominate',store:'Store — DreamMC Ranks, Keys & Crates'}[r];
+  document.title = t || (r? r.replace('-',' ').replace(/^./,c=>c.toUpperCase())+' — DreamMC' : 'DreamMC');
+}
+window.addEventListener('hashchange',route);
+
+/* ========= CART ========= */
+function renderCart(){
+  $('#cartCount').textContent = cart.length;
+  const total = cart.reduce((s,i)=>s+i.price,0);
+  $('#total').textContent = inr(total);
+  $('#items').innerHTML = cart.length ? cart.map((i,n)=>`<div class="item">
+    <img src="${IMG+i.img}" alt="" onerror="this.style.visibility='hidden'">
+    <div class="i-info"><div class="i-name">${i.name}</div><div class="i-sub">${i.opt?i.opt+' · ':''}${inr(i.price)}</div></div>
+    <button class="rm" data-rm="${n}" aria-label="Remove ${i.name}">✕</button></div>`).join('')
+    : '<p class="empty">Your cart is empty. Add a rank, key or crate from the store.</p>';
+  $('#checkout').style.display = cart.length ? '' : 'none';
+}
+const openCart = on => { $('#drawer').classList.toggle('on',on); $('#overlay').classList.toggle('on',on); };
+
+/* ========= EVENTS ========= */
+document.addEventListener('click',e=>{
+  const t = e.target.closest('button,a'); if(!t) return;
+  if(t.dataset.copy!==undefined){
+    navigator.clipboard?.writeText('play.dreammc.fun').then(()=>toast('IP copied: play.dreammc.fun')).catch(()=>toast('play.dreammc.fun'));
+  }
+  if(t.dataset.add){
+    const p = P.find(x=>x.id===t.dataset.add);
+    cart.push({id:p.id,name:p.name,img:p.img,price:priceOf(p),opt:p.opts?p.opts[selIdx(p)][0]:''});
+    saveCart(); renderCart(); toast(p.name+' added to cart');
+  }
+  if(t.dataset.pick){
+    state.sel[t.dataset.pick] = +t.dataset.i;
+    if($('#storeGrid')) renderStoreGrid(); else route();
+  }
+  if(t.dataset.cat){ state.cat=t.dataset.cat; document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b.dataset.cat===state.cat)); renderStoreGrid(); }
+  if(t.dataset.rm!==undefined){ cart.splice(+t.dataset.rm,1); saveCart(); renderCart(); }
+});
+document.addEventListener('input',e=>{ if(e.target.id==='search'){ state.q=e.target.value; renderStoreGrid(); }});
+$('#cartBtn').onclick = ()=>openCart(true);
+$('#closeCart').onclick = $('#overlay').onclick = ()=>openCart(false);
+$('#burger').onclick = ()=>$('#links').classList.toggle('open');
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') openCart(false); });
+
+renderCart(); route();
+</script>
+</body>
+</html>
